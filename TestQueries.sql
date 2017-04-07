@@ -36,7 +36,7 @@ Select s.id from student s join houseRequests r on r.studentId = s.id where r.ch
 Select s.id from student s join houseRequests r on r.studentId = s.id where r.choice1 = 8 ;
 
 
-								/****Choice2****?
+/****Choice2****/
                                 
 /* 2. List of Students who chose Lowrey as choice2 */
 Select s.id from student s join houseRequests r on r.studentId = s.id where r.choice2 = 2 ;
@@ -63,7 +63,8 @@ Select s.id from student s join houseRequests r on r.studentId = s.id where r.ch
 Select s.id from student s join houseRequests r on r.studentId = s.id where r.choice2 = 8 ;
 
 
-								/******Choice3******/
+/******Choice3******/
+
 /* 1. List of Students who chose Ferguson as choice3 */
 Select s.id from student s join houseRequests r on r.studentId = s.id where r.choice3 = 8 ;
 
@@ -90,7 +91,8 @@ Select s.id from student s join houseRequests r on r.studentId = s.id where r.ch
 
 
 
-									/******Choice4******/
+/******Choice4******/
+
 /* 1. List of Students who chose Ferguson as choice4 */
 Select s.id from student s join houseRequests r on r.studentId = s.id where r.choice4 = 8 ;
 
@@ -115,7 +117,8 @@ Select s.id from student s join houseRequests r on r.studentId = s.id where r.ch
 /* 8. List of Students who chose Joe as choice4 */
 Select s.id from student s join houseRequests r on r.studentId = s.id where r.choice4 = 7 ;
 
-								/****Requested a house at any choice****/
+
+/****Requested a house at any choice****/
 
 /* 1. List of students who requested Howard House in at least one of their choices*/
 Select s.id from student s join houseRequests r on r.studentId = s.id where r.choice1 = 1 or
