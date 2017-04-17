@@ -16,7 +16,7 @@ public class SortingAlgorithm {
         public final Vector<String> house7 = new Vector<String>(); //Ferguson
         public final Vector<String> house8 = new Vector<String>(); //Anderson
         public final Vector<String> house9 = new Vector<String>(); //Rackham
-
+        public final Vector<Vector> allHouses = new Vector<Vector>(); //all
     }
 
     public Vector<String> addChoices(Vector<String> student, Vector<Vector>
@@ -59,6 +59,7 @@ public class SortingAlgorithm {
 
     public Vector<String> updateSpotsAvail(Vector<String> house, int spots){
         house.add(spots);
+        hosues.add(house);
     }
 
     public Vector<String> placeInHouse(String houseNum, Vector<String> student,
@@ -66,25 +67,22 @@ public class SortingAlgorithm {
         houseNum.add(student);
     }
 
-    public int[] sortHousesByAvail(Vector<String> houses){
+    //
+    public Vector<Vector> sortHousesByAvail(Vector<Vector> houses){
 
-        int[] spotsAvail = new int[];
-
-        for(int i = 0; i < houses.length; i++){
+        for(int i = 0; i < houses.size(); i++){
 
             //sort houses by number of spots available
-            int sorted, i;   //num of sorted, index
-            Vector<String> curr = Vector<String>;
+            int sorted, curr, i;   //num of sorted, index
 
         for (sorted = 1; sorted < houses.size(); sorted++) //start with 1 (not 0)
         {
-            curr = houses.elementAt().getElementAt(sorted); //EMMA YOU LEFT OFF HERE
-            for(i = sorted - 1; (i >= 0) && (houses.get(i) < curr); i--) //smaller move up
+            curr = houses.elementAt(sorted).getElementAt(1);
+            for(i = sorted - 1; (i >= 0) && (houses.elementAt(sorted).getElementAt(i) < curr); i--) //smaller move up
             {
                 houses.get(i+1) = houses.get(i);
             }
             houses.get(i+1) = curr;    //place current house in its proper location
         }
     }
-
 }
