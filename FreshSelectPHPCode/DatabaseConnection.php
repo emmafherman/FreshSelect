@@ -6,11 +6,10 @@
  * Time: 2:18 PM
  */
 
-define('DB_SERVER', 'localhost: 3306');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'Tog!w#LDj+');
-define('DB_DATABASE', 'FreshSelect');
-$db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+define('DB_USERNAME', 'id1197947_emmaherman');
+define('DB_PASSWORD', '1234567890');
+define('DB_DATABASE', 'id1197947_freshselect');
+$db = mysqli_connect('localhost',DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
 // Check connection
 if($db === false){

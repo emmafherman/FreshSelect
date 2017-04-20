@@ -20,9 +20,10 @@ $gender = $_GET["gender"];
 $freshHouse = $_GET['freshHouse'];
 
 $tempPrinId = substr($prinId, -9, 3);
+$newUser = strtolower($newUser);
 
 if (strtoupper($gender) == 'MALE')
-    $tempGender = strtoupper(substr($gender, -3, 1));
+    $tempGender = strtoupper(substr($gender, -4, 1));
 else if (strtoupper($gender) == 'FEMALE')
     $tempGender = strtoupper(substr($gender, -6, 1));
 
@@ -65,7 +66,7 @@ else {
 
             if (mysqli_query($db, $sql)) {
                 echo "New User added successfully.";
-                header('Refresh: 2; URL = LoginPage.php');
+                header('Refresh: 2; URL = login.php');
                 exit();
             }
             else {
