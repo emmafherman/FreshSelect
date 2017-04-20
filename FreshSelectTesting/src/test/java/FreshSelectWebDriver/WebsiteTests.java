@@ -31,7 +31,7 @@ public class WebsiteTests {
 
     public static void login() {
         pass = getPassword();
-        String URL = "http://" + ENVIRONMENT;     //goes to log-in page
+        String URL = "http://" + ENVIRONMENT + "login.php";//goes to log-in page
         driver.get(URL);
 
         // logs in with pre-established user name and password
@@ -47,35 +47,60 @@ public class WebsiteTests {
     }
 
     public static void registerUser() {
-        String URL = "https://freshselect.000webhostapp.com/Registeration";
+        String URL = "http://" + ENVIRONMENT + "registerationPage.php";
         driver.get(URL);
 
         //tests boundries of usernames (should only be Prin ID)
         WebDriverWait wait = new WebDriverWait(driver, 4000);
         wait.until(ExpectedConditions.visibilityOfElementLocated((By.id
-                ("newUser"))));
-        driver.findElement(By.id("newUser")).sendKeys(badUser1); //fails
-        driver.findElement(By.id("newUser")).sendKeys(badUser2); //fails
-        driver.findElement(By.id("newUser")).sendKeys(badUser3); //fails
-        driver.findElement(By.id("newUser")).sendKeys(testUser); //works
+                ("prinId"))));
+        driver.findElement(By.id("prinId")).sendKeys(badUser1); //fails
+        submit();
+        driver.findElement(By.id("prinId")).sendKeys(badUser2); //fails
+        submit();
+        driver.findElement(By.id("prinId")).sendKeys(badUser3); //fails
+        submit();
+        driver.findElement(By.id("prinId")).sendKeys(testUser); //works
+        submit();
+
+        //tests first name - can't be empty
+        WebDriverWait wait = new WebDriverWait(driver, 4000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated((By.id
+                ("firstName"))));
+        driver.findElement(By.id("firstName")).sendKeys("Emma"); //works
+
+        //tests last name - can't be empty
+        WebDriverWait wait = new WebDriverWait(driver, 4000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated((By.id
+                ("lastName"))));
+        driver.findElement(By.id("lastName")).sendKeys(); //fails
+        submit();
+        selenium.click("Back");    //go back registration to page
+        driver.findElement(By.id("lastName")).sendKeys("Herman"); //works
 
         //gender "M" or "F" required
         wait.until(ExpectedConditions.visibilityOfElementLocated((By.id
                 ("gender"))));
         driver.findElement(By.id("gender")).sendKeys("J"); //fails
+        submit();
+        selenium.click("Back");
         driver.findElement(By.id("gender")).sendKeys("F"); //works
 
         //enter new password and confirm
         driver.findElement(By.id("newPwd")).sendKeys(getPassword());
-        driver.findElement(By.id("ConfirmPwd")).sendKeys(getPassword());
+        driver.findElement(By.id("ConfirmPwd")).sendKeys(); //wrong - mismatch
         submit();
+        selenium.click("Back");
+        driver.findElement(By.id("newPwd")).sendKeys(getPassword());
+        driver.findElement(By.id("ConfirmPwd")).sendKeys(getPassword());
+        submit(); //works
 
         //confirm registration
         reportNewUser(user, "New user is registered.");
     }
 
     public static void submit() {
-        WebElement element = driver.findElement(By.id("btnSave"));
+        WebElement element = driver.findElement(By.id("submit"));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
     }
@@ -94,7 +119,7 @@ public class WebsiteTests {
         String password = JOptionPane.showInputDialog(parent, "Enter Prin ID",
                 null);
         return testUser;
-    } //GetPassword
+    } //getNewId
 
     public static void reportNewUser(String userName, String Title) {
         JOptionPane.showMessageDialog(null, userName, Title,
@@ -104,7 +129,6 @@ public class WebsiteTests {
     public static void houseSelection(){
         String URL = "https://freshselect.000webhostapp.com/HouseSelection";
         driver.get(URL);
-
         submit(); //fails because nothing has been selected
 
         //tests house selection boundaries

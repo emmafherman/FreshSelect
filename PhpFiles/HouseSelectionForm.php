@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- HTML created by Emma Herman -->
+<!-- Created by Emma Herman -->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -36,14 +36,7 @@
         #content-inner { margin:0 auto; padding:10px; width:970px;background:#fff;}
         #content #contentbar { margin:0; padding:0; float:right; width:760px;}
         #content #contentbar .article { margin:0 0 24px; padding:0 20px 0 15px; }
-        #content #sidebar { padding:0; float:left; width:200px;}
-        #content #sidebar .widget { margin:0 0 12px; padding:8px 8px 8px 13px;line-height:1.4em;}
-        #content #sidebar .widget h3 a { text-decoration:none;}
-        #content #sidebar .widget ul { margin:0; padding:0; list-style:none; color:#959595;}
-        #content #sidebar .widget ul li { margin:0;}
-        #content #sidebar .widget ul li { padding:4px 0; width:185px;}
-        #content #sidebar .widget ul li a { color:blue; text-decoration:none; margin-left:-16px; padding:4px 8px 4px 16px;}
-        #content #sidebar .widget ul li a:hover { color:#d3d3f9; font-weight:bold; text-decoration:none;}
+        #content #contentbar .error {color: red;}
 
         /* Footerblurb */
         #footerblurb { background:#eee;color:blue;}
@@ -73,7 +66,6 @@
                     <li><a href="houseRegistrationPage.php">Update House Info</a></li>
                     <li><a href="houseSelectionPage.php">House Selection Form</a></li>
                     <li><a href="finalHouseSortedPage.php">Final Sorted List</a></li>
-                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
             <div class="clr"></div>
@@ -84,50 +76,81 @@
             <h1>Freshmen sorting</h1>
         </div>
     </div>
-
-
     <div id="content">
         <div id="content-inner">
-
             <main id="contentbar">
                 <div class="article">
-                    <h2><span>Dear Freshmen...</span></h2>
-                    <p><span>This site is used by Principia College to best sort you into your upperclassmen housing.</span></p>
-                    <p><span>Please navigate to the House Selection Form in order to fill out your housing choices. If you are late, your form will automatically be sorted into the "any" category and you'll go into the house that needs you the most.</span></p>
-                    <p><span>Regardless of how things turn out, you'll bless and be blessed by the house you end up in next year. I pinky promise!</span></p>
-                    <h2><span>Love,</span></h2>
-                    <h2><span>  the Principia Panther.</span></h2>
-                </div>
-            </main>
+                    <body>
+                    <?php echo '<h1>House Selection Form</h1>'; ?>
 
-            <nav id="sidebar">
-                <div class="widget">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">House info</a></li>
-                        <li><a href="#">Student Life website</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="logout.php">Logout</a></li>
-                    </ul>
-                </div>
-            </nav>
+                    <p><span class = "error" > * required field. </span></p>
+                    <form  method = "GET" action="houseSelectionData.php">
+                        First Choice:   <input type = "text" name = "choice1">
+                        <span class="error">*</span>
+                        <br><br>
+                        Second Choice:   <input type = "text" name = "choice2">
+                        <span class="error">*</span>
+                        <br><br>
+                        Third Choice:   <input type = "text" name = "choice1">
+                        <span class="error">*</span>
+                        <br><br>
+                        Fourth Choice:   <input type = "text" name = "choice2">
+                        <span class="error">*</span>
+                        <br><br>
+                        Where I can bless the most:   <input type = "text" name = "choiceAny">
+                        <span class="error">*</span>
+                        <br><br>
+                        <input type = "submit" name = "submit" value = "Submit">
+                    </body>
+</html>
+</div>
+</main>
 
-            <div class="clr"></div>
-        </div>
+
+<nav id="sidebar">
+    <div class="widget">
+        <ul>
+            <h3> Female Houses</h3>
+            <p><span>Brooks
+                        <br>
+            <p><span>Howard
+                        <br>
+            <p><span>Joe
+                        <br>
+            <p><span>Syl - Women
+            </p></span>
+
+            <h3> Male Houses</h3>
+
+            <p><span>Buck
+                        <br>
+            <p><span>Ferg
+                        <br>
+            <p><span>Lowrey
+                        <br>
+            <p><span>Syl - Men
+                        <br><br></p></span>
+        </ul>
     </div>
+</nav>
+<div class="clr"></div>
+</div>
+</div>
+<div id="footerblurb">
+    <div id="footerblurb-inner">
 
-    <div id="footerblurb">
-        <div id="footerblurb-inner">
-
-            <div class="column">
-                <h2><span>Principia College</span></h2>
-            </div>
-            <div class="column">
-                <p><span>Created by Emma Herman, Caidi Phillips, and Peter Nabiswa</span></p>
-            </div>
-            <div class="clr"></div>
+        <div class="column">
+            <h2><span></span></h2>
         </div>
+        <div class="column">
+            <p><span></span></p>
+        </div>
+        <div class="column">
+            <p><span>by E. Herman, C. Phillips, and P. Nabiswa</span></p>
+        </div>
+        <div class="clr"></div>
     </div>
+</div>
 </div>
 </body>
 </html>

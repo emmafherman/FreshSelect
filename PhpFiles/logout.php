@@ -1,12 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: emma
- * Date: 4/17/17
- * Time: 7:33 AM
+ * Created by Emma
  */
    session_start();
-   unset($_SESSION["username"]);
+   unset($_SESSION["login"]);
    unset($_SESSION["password"]);
 
    echo 'You are logged out';

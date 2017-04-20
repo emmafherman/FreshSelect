@@ -73,7 +73,6 @@
                     <li><a href="houseRegistrationPage.php">Update House Info</a></li>
                     <li><a href="houseSelectionPage.php">House Selection Form</a></li>
                     <li><a href="finalHouseSortedPage.php">Final Sorted List</a></li>
-                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
             <div class="clr"></div>
@@ -85,32 +84,22 @@
         </div>
     </div>
 
-
     <div id="content">
         <div id="content-inner">
 
             <main id="contentbar">
                 <div class="article">
-                    <h2><span>Dear Freshmen...</span></h2>
-                    <p><span>This site is used by Principia College to best sort you into your upperclassmen housing.</span></p>
-                    <p><span>Please navigate to the House Selection Form in order to fill out your housing choices. If you are late, your form will automatically be sorted into the "any" category and you'll go into the house that needs you the most.</span></p>
-                    <p><span>Regardless of how things turn out, you'll bless and be blessed by the house you end up in next year. I pinky promise!</span></p>
-                    <h2><span>Love,</span></h2>
-                    <h2><span>  the Principia Panther.</span></h2>
-                </div>
-            </main>
-
-            <nav id="sidebar">
-                <div class="widget">
-                    <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">House info</a></li>
-                        <li><a href="#">Student Life website</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="logout.php">Logout</a></li>
+                        <br>
+                        <h1><li><a href="login.php">Login</a></li>
+                            <br>
+                            <h1><li><a href="registrationPage.php">Register </a></li>
+                                <br>
+                                <h1><li><a href="logout.php">Logout</a></li></h1>
+                                <br>
                     </ul>
                 </div>
-            </nav>
+            </main>
 
             <div class="clr"></div>
         </div>
@@ -120,10 +109,13 @@
         <div id="footerblurb-inner">
 
             <div class="column">
-                <h2><span>Principia College</span></h2>
+                <h2><span></span></h2>
             </div>
             <div class="column">
-                <p><span>Created by Emma Herman, Caidi Phillips, and Peter Nabiswa</span></p>
+                <p><span></span></p>
+            </div>
+            <div class="column">
+                <p><span>by E. Herman, C. Phillips, and P. Nabiswa</span></p>
             </div>
             <div class="clr"></div>
         </div>

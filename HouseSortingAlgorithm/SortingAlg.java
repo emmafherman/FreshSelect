@@ -13,9 +13,10 @@ public class SortingAlgorithm {
         public final Vector<String> house4 = new Vector<String>(); //Brooks
         public final Vector<String> house5 = new Vector<String>(); //Syl-Men
         public final Vector<String> house6 = new Vector<String>(); //Syl-Women
-        public final Vector<String> house7 = new Vector<String>(); //Ferguson
-        public final Vector<String> house8 = new Vector<String>(); //Anderson
-        public final Vector<String> house9 = new Vector<String>(); //Rackham
+        public final Vector<String> house7 = new Vector<String>(); //Joe
+        public final Vector<String> house8 = new Vector<String>(); //Ferg
+        public final Vector<String> house9 = new Vector<String>(); //Anderson
+        public final Vector<String> house10 = new Vector<String>(); //Rackham
         public final Vector<Vector> allHouses = new Vector<Vector>(); //all
     }
 
