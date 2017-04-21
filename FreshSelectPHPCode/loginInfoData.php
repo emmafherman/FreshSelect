@@ -14,7 +14,6 @@ include ("DatabaseConnection.php")
 
 <html
 <body>
-
 <?php
 // Gets the information from the form
 $login = $_POST["login"];
@@ -31,8 +30,7 @@ if (empty($login))
     echo "Please enter your login.";
 else
 {
-    if ($login == $row["login"])
-    {
+    if ($login == $row["login"]) {
         $resultPassword = $row["password"];
 
         if (empty($password))
@@ -45,8 +43,6 @@ else
             echo 'You are now logged in!';
             $_SESSION['permission'] = $row["permission"];
             $_SESSION['logged_in'] = true;
-            $_SESSION['timeout'] = time();
-            $_SESSION['login'] = $login;
             header('Refresh: 1; URL = home.php');
             exit();
         }
@@ -57,7 +53,6 @@ else
         echo "Incorrect login.";
 }
 ?>
-
 <br><INPUT TYPE = "button" VALUE = "Back" onClick = "history.go(-1);"/>
 </body>
 </html>

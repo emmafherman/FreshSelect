@@ -2,7 +2,7 @@
 include ("DatabaseConnection.php")
 ?>
 <html>
-<!--- Coded by Caidi --->
+<!--- Coded by Caidi Phillips --->
 <body>
 <?php
 
@@ -56,13 +56,16 @@ else {
                 echo "New User added successfully.";
                 header('Refresh: 1; URL = login.php');
                 exit();
-            } else {
+            }
+            else {
                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
             }
-        } else {
+        }
+        else {
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
         }
-    } else {
+    }
+    else {
         echo "Passwords did not match.";
     }
 }
