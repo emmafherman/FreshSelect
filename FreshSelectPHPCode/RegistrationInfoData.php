@@ -6,31 +6,18 @@ include ("DatabaseConnection.php")
 <body>
 
 <?php
-$tempPrinId;
-$tempGender;
-$tempFreshHouse;
 
-$prinId = $_GET["prinId"];
-$firstName = $_GET["firstName"];
-$lastName = $_GET["lastName"];
-$newUser = $_GET["newUser"];
-$newPwd = $_GET["newPwd"];
-$confirmPwd = $_GET["confirmPwd"];
-$gender = $_GET["gender"];
-$freshHouse = $_GET['freshHouse'];
+$prinId = $_POST["prinId"];
+$firstName = $_POST["firstName"];
+$lastName = $_POST["lastName"];
+$newUser = $_POST["newUser"];
+$newPwd = $_POST["newPwd"];
+$confirmPwd = $_POST["confirmPwd"];
+$gender = $_POST["gender"];
+$freshHouse = $_POST['freshHouse'];
 
 $tempPrinId = substr($prinId, -9, 3);
 $newUser = strtolower($newUser);
-
-if (strtoupper($gender) == 'MALE')
-    $tempGender = strtoupper(substr($gender, -4, 1));
-else if (strtoupper($gender) == 'FEMALE')
-    $tempGender = strtoupper(substr($gender, -6, 1));
-
-if (strtoupper($freshHouse) == 'ANDERSON')
-    $tempFreshHouse = strtoupper($freshHouse);
-else if (strtoupper($freshHouse) == 'RACKHAM')
-    $tempFreshHouse = strtoupper($freshHouse);
 
 if (empty($prinId))
     echo "Please enter your Prin ID.";
@@ -48,28 +35,22 @@ else if (empty($confirmPwd))
     echo "Please confirm your password.";
 else if (empty($gender))
     echo "Please enter your gender.";
-else if (empty($tempGender))
-    echo "Please enter either female or male.";
 else if (empty($freshHouse))
     echo "Please enter your freshman house.";
-else if (empty($tempFreshHouse))
-    echo "Please enter either Anderson or Rackham.";
 else {
     if ($newPwd == $confirmPwd) {
         $sql = "INSERT INTO Person (prinId, firstName, lastName, login, password, permission) 
-           VALUES ('$prinId', '$firstName', '$lastName', '$newUser', PASSWORD('$confirmPwd'), DEFAULT )";
+           VALUES ('$prinId', '$firstName', '$lastName', '$newUser', MD5('$confirmPwd'), DEFAULT )";
 
         if (mysqli_query($db, $sql)) {
             $sql = "INSERT INTO Student (prinId, gender, freshHouse, upperHouse, preference) 
-           VALUES ('$prinId', '$tempGender', '$tempFreshHouse', DEFAULT , DEFAULT )";
-
+           VALUES ('$prinId', '$gender', '$freshHouse', DEFAULT , DEFAULT )";
 
             if (mysqli_query($db, $sql)) {
                 echo "New User added successfully.";
                 header('Refresh: 2; URL = login.php');
                 exit();
-            }
-            else {
+            } else {
                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
             }
 
@@ -81,6 +62,7 @@ else {
     }
 }
 ?>
+
 <br><INPUT TYPE = "button" VALUE = "Back" onClick = "history.go(-1);"/>
 </body>
 </html>

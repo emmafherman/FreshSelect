@@ -13,29 +13,40 @@ include ("DatabaseConnection.php")
 <body>
 
 <?php
-$login = $_GET["login"];
-$password = $_GET["password"];
+$login = $_POST["login"];
+$password = $_POST["password"];
+$userInputPass = MD5($password);
 
 $login = strtolower($login);
 
-$sql = "SELECT login FROM Person WHERE login = '$login'";
+$sql = "SELECT login, password FROM Person WHERE login = '$login'";
 $result = $db->query($sql);
 $row = $result->fetch_assoc();
 
-if ($login == $row["login"])
-{
-    echo 'Yay, your login matched.';
-    $sql = "SELECT password FROM Person WHERE password = '$password'";
-    $result = $db->query($sql);
-    $row = $result->fetch_assoc();
-
-    echo $row["password"];
-
-}
-
+if (empty($login))
+    echo "Please enter your login.";
 else
-    echo "Please enter a valid login."
+{
+   if ($login == $row["login"])
+   {
+       $resultPassword = $row["password"];
 
+       if (empty($password))
+           echo "Please enter your password.";
+       else if ($userInputPass == $resultPassword)
+       {
+           echo 'You are now logged in!';
+           $_SESSION['valid'] = true;
+           $_SESSION['timeout'] = time();
+           header('Refresh: 1; URL = home.php');
+           exit();
+       }
+       else
+           echo 'Incorrect password.';
+   }
+   else
+       echo "Incorrect login.";
+}
 ?>
 
 <br><INPUT TYPE = "button" VALUE = "Back" onClick = "history.go(-1);"/>
