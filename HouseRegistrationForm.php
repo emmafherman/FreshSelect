@@ -9,44 +9,6 @@ include ("DatabaseConnection.php")
 // define variables and set to empty values
 $id = $houseName = $houseGender = $spotsAvailable = $spotsFilled  = "";
 
-$idErr = $houseNameErr = $houseGenderErr = $spotsAvailableErr = $spotsFilledErr  = "";
-
-
-
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
-    if (empty($_GET["id"])) {
-        $idErr = "id is required";
-    } else {
-        $id = test_input($_GET["id"]);
-    }
-
-    if (empty($_GET["houseName"])) {
-        $houseNameErr = "Name is required";
-    } else {
-        $houseName = test_input($_GET["houseName"]);
-    }
-
-    if (empty($_GET["houseGender"])) {
-        $houseGenderErr = "Gender is required";
-    } else {
-        $houseGender = test_input($_GET["houseGender"]);
-    }
-
-    if (empty($_GET["spotsAvailable"])) {
-        $spotsAvailableErr = "spotsAvailable is a required field";
-    } else {
-        $spotsAvailable = test_input($_GET["spotsAvailable"]);
-    }
-
-    if (empty($_GET["spotsFilled"])) {
-        $spotsFilledErr = "spotsFilled is required";
-    } else {
-        $spotsFilled = test_input($_GET["spotsFilled"]);
-    }
-
-}
-
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -55,25 +17,11 @@ function test_input($data) {
 }
 
 ?>
-<div id="HouseRegistration">
-    <h2>House Registration</h2>
+<div id="HouseUpdate">
+    <h2>House Update</h2>
     <p><span class = "error">* required field.</span></p>
     <form method = "get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-        ID : <select name="id">
-                    <option value="">Enter the House ID...</option>
-                    <option value="1">Howard</option>
-                    <option value="2">Lowrey</option>
-                    <option value="3">Buck</option>
-                    <option value="4">Brooks</option>
-                    <option value="5">Syl-Men</option>
-                    <option value="6">Syl-Women</option>
-                    <option value="7">Joe</option>
-                    <option value="8">Ferguson</option>
-                    <option value="9">Anderson</option>
-                    <option value="10">Rackham</option>
-                    </select>
-                    <br><br>
         House Name: <select name="houseName">
                     <option value="">Enter the House ID...</option>
                     <option value="Howard">Howard</option>
@@ -106,30 +54,41 @@ function test_input($data) {
 <?php
 
 if(isset($_GET["submit"])){
-    $h_id = $_GET["id"];
-    $h_name = $_GET["houseName"];
-    $h_gender = $_GET["houseGender"];
-    $h_sAvailable = $_GET["spotsAvailable"];
-    $h_sFilled =$_GET["spotsFilled"];
+    $h_name = test_input($_GET["houseName"]);
+    $h_gender = test_input($_GET["houseGender"]);
+    $h_sAvailable = test_input($_GET["spotsAvailable"]);
+    $h_sFilled = test_input($_GET["spotsFilled"]);
 
-    try{
+    if (empty($h_name)) 
+        echo "Please enter the house name.";
+    else if (empty($h_gender)) 
+        echo  "Please enter the house gender.";
+    else if (!isset($h_sAvailable)) 
+        echo  "Please enter the number of spaces available.";
+    else if (!isset($h_sFilled)) 
+        echo  "Please enter the number of spots filled.";
+    else {
+        
+     try{
+        
         $sql = "INSERT INTO House(id,houseName,houseGender,spotsAvailable,spotsFilled)
-	    VALUES ('$h_id','$h_name','$h_gender','$h_sAvailable','$h_sFilled')";
-        
-        
+        VALUES (DEFAULT,'$h_name','$h_gender','$h_sAvailable','$h_sFilled') 
+        ON DUPLICATE KEY UPDATE spotsAvailable = $h_sAvailable, spotsFilled = $h_sFilled ";
+            
         if(mysqli_query($db, $sql)){
-                echo "New House added successfully.";
+                echo "Record added successfully.";
                 
             } else{
                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
             }
-        
-    }
-    catch(PDOException $e)
-    {
-        echo $e->getMessage();
-    }
+            
+        }
+        catch(PDOException $e)
+        {
+            echo $e->getMessage();
+        }
 
+    }
 }
 ?>
 

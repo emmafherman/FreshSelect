@@ -53,6 +53,10 @@
     </style>
 </head>
 <body>
+<?php
+//Coded by Peter Nabiswa
+include ("DatabaseConnection.php")
+?>
 <div id="page">
     <header id="header">
         <div id="header-inner">
@@ -83,72 +87,14 @@
                     <body>
 <?php echo '<h1>House Selection Form</h1>'; ?>
 
-//Coded by Peter Nabiswa
-<?php
-include ("DatabaseConnection.php")
-?>
-
 <html>
 <body>
 
 <?php
 // define variables and set to empty values
 $id = $prinId = $choice1 = $choice2 = $choice3  = $choice4 = $choiceAny = $timeStamp = "";
-
-$idErr = $prinIdErr = $choice1Err = $choice2Err = $choice3Err  = $choice4Err = $choiceAnyErr = $timeStampErr = "";
-
-
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
-    if (empty($_GET["id"])) {
-        $idErr = "id is required";
-    } else {
-        $id = test_input($_GET["id"]);
-    }
-
-    if (empty($_GET["prinId"])) {
-        $prinIdErr = "prinId is required";
-    } else {
-        $prinId = test_input($_GET["prinId"]);
-    }
-
-    if (empty($_GET["choice1"])) {
-        $choice1Err = "choice1 is required";
-    } else {
-        $choice1 = test_input($_GET["choice1"]);
-    }
-
-    if (empty($_GET["choice2"])) {
-        $choice2Err = "choice2 is a required field";
-    } else {
-        $choice2 = test_input($_GET["choice2"]);
-    }
-
-    if (empty($_GET["choice3"])) {
-        $choice3Err = "choice3 is required";
-    } else {
-        $choice3 = test_input($_GET["choice3"]);
-    }
-    
-     if (empty($_GET["choice4"])) {
-        $choice4Err = "choice4 is required";
-    } else {
-        $choice4 = test_input($_GET["choice4"]);
-    }
-    
-     if (empty($_GET["choiceAny"])) {
-        $choiceAnyErr = "choiceAny is required";
-    } else {
-        $choiceAny = test_input($_GET["choiceAny"]);
-    }
-    
-     if (empty($_GET["timeStamp"])) {
-        $timeStampErr = "timeStamp is required";
-    } else {
-        $timeStamp = test_input($_GET["timeStamp"]);
-    }
-
-}
+$hseName="";
+$numSpots = "";
 
 function test_input($data) {
     $data = trim($data);
@@ -157,50 +103,63 @@ function test_input($data) {
     return $data;
 }
 
-?>
-<div id="HouseRegistration">
-    <p><span class = "error">* required field.</span></p>
-    <form method = "get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+function get_spotsAvailable($db,$hseName) {
+   //Fetching records from the database
+   $user = 'SELECT houseName, spotsAvailable FROM House' ;
+   $retval = mysqli_query( $db, $user);
+   
+   if(! $retval ) {
+      die('Could not get data: ' . mysqli_error());
+   }
+   while($row = mysqli_fetch_array($retval, MYSQLI_BOTH)) {
+       if($row["houseName"] == $hseName){
+           $numSpots = $row["spotsAvailable"];
+       }        
+   } 
+   
+    return $numSpots;
+}
 
-        ID : <input type="number" name="id" required="required" placeholder="Enter the ID">
-        <span class="error">* <?php echo $idErr;?></span>
-        <br><br>
-        Prin Id : <input type="number" name="prinId" required="required" placeholder=" Enter the Prin ID">
+?>
+<div id="HouseSelection">
+    <form method = "get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    
+        Prin Id : <input type="text" name="prinId" required="required" placeholder=" Enter your Prin ID i.e P01..">
         <br><br>
         choice 1 : <select name="choice1">
-                    <option value="">Enter the House ID...</option>
-                    <option value="1">Howard</option>
-                    <option value="2">Lowrey</option>
-                    <option value="3">Buck</option>
-                    <option value="4">Brooks</option>
-                    <option value="5">Syl-Men</option>
-                    <option value="6">Syl-Women</option>
-                    <option value="7">Joe</option>
-                    <option value="8">Ferguson</option>
+                        <option value="">Enter the House ID...</option>
+                        <option value="1">Howard</option>
+                        <option value="2">Lowrey</option>
+                        <option value="3">Buck</option>
+                        <option value="4">Brooks</option>
+                        <option value="5">Syl-Men</option>
+                        <option value="6">Syl-Women</option>
+                        <option value="7">Joe</option>
+                        <option value="8">Ferg</option>
                     </select>
                     <br><br>
         choice 2 : <select name="choice2">
-                    <option value="">Enter the House ID...</option>
-                    <option value="1">Howard</option>
-                    <option value="2">Lowrey</option>
-                    <option value="3">Buck</option>
-                    <option value="4">Brooks</option>
-                    <option value="5">Syl-Men</option>
-                    <option value="6">Syl-Women</option>
-                    <option value="7">Joe</option>
-                    <option value="8">Ferg</option>
+                        <option value="">Enter the House ID...</option>
+                        <option value="1">Howard</option>
+                        <option value="2">Lowrey</option>
+                        <option value="3">Buck</option>
+                        <option value="4">Brooks</option>
+                        <option value="5">Syl-Men</option>
+                        <option value="6">Syl-Women</option>
+                        <option value="7">Joe</option>
+                        <option value="8">Ferg</option>
                     </select>
                     <br><br>
         Choice 3 : <select name="choice3">
-                    <option value="">Enter the House ID...</option>
-                    <option value="1">Howard</option>
-                    <option value="2">Lowrey</option>
-                    <option value="3">Buck</option>
-                    <option value="4">Brooks</option>
-                    <option value="5">Syl-Men</option>
-                    <option value="6">Syl-Women</option>
-                    <option value="7">Joe</option>
-                    <option value="8">Ferg</option>
+                        <option value="">Enter the House ID...</option>
+                        <option value="1">Howard</option>
+                        <option value="2">Lowrey</option>
+                        <option value="3">Buck</option>
+                        <option value="4">Brooks</option>
+                        <option value="5">Syl-Men</option>
+                        <option value="6">Syl-Women</option>
+                        <option value="7">Joe</option>
+                        <option value="8">Ferg</option>
                     </select>
                     <br><br>
         Choice 4 : <select name="choice4">
@@ -215,7 +174,7 @@ function test_input($data) {
                         <option value="8">Ferg</option>
                     </select>
                     <br><br>
-        Do you care where you end up? : <select name="choiceAny">
+        Do you care where you end up?  <select  name="choiceAny" required = "required">
                       <option value="">Select...</option>
                       <option value="Y">Yes, Absolutely!</option>
                       <option value="N">No, I don't care!</option>
@@ -228,37 +187,56 @@ function test_input($data) {
 
 <?php
 if(isset($_GET["submit"])){
-    $hs_id = $_GET["id"];
-    $hs_prinId = $_GET["prinId"];
-    $hs_choice1 = $_GET["choice1"];
-    $hs_choice2 = $_GET["choice2"];
-    $hs_choice3 = $_GET["choice3"];
-    $hs_choice4 = $_GET["choice4"];
-    $hs_choiceAny = $_GET["choiceAny"];
+    $hs_prinId = test_input($_GET["prinId"]);
+    $hs_choice1 = test_input($_GET["choice1"]);
+    $hs_choice2 =  test_input($_GET["choice2"]);
+    $hs_choice3 = test_input($_GET["choice3"]);
+    $hs_choice4 = test_input($_GET["choice4"]);
+    $hs_choiceAny = test_input($_GET["choiceAny"]);
     
-
-    try{
-        $sql = "INSERT INTO HouseSelection(id, prinId,choice1,choice2,choice3,choice4,choiceAny,timeStamp)
-	    VALUES ($hs_id,'$hs_prinId','$hs_choice1','$hs_choice2',' $hs_choice3 ','$hs_choice4', '$hs_choiceAny', DEFAULT)";
-        
-        
-        if(mysqli_query($db, $sql)){
-                echo "New House Request added successfully.";
-                
-            } else{
-                echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
-            }
-        
+    $tempPrinId = substr($hs_prinId, -9, 3);
+    
+    if (empty($hs_prinId)) 
+        echo "prinId is a required field.";
+    else if ($tempPrinId != "P01")
+        echo "Prin ID must start with P01.";
+    else if (empty($hs_choice1)) 
+        echo "choice1 is a required field.";
+    else if (empty($hs_choice2)) 
+       echo "choice2 is a required field.";
+    else if (empty($hs_choice3 )) 
+        echo "choice3 is a required field.";
+    else if (empty($hs_choice4 )) 
+       echo "choice4 is a required field.";
+    else if (empty($hs_choiceAny)) 
+       echo "choiceAny is a required field.";
+    else {
+    
+        try{
+            $sql = "INSERT INTO HouseSelection(id, prinId,choice1,choice2,choice3,choice4,choiceAny,timeStamp)
+            VALUES (DEFAULT,'$hs_prinId','$hs_choice1','$hs_choice2',' $hs_choice3 ','$hs_choice4', '$hs_choiceAny', DEFAULT)";
+            
+            
+            if(mysqli_query($db, $sql)){
+                    echo "New House Request added successfully.";
+                    
+                } else{
+                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+                }
+            
+        }
+        catch(PDOException $e)
+        {
+            echo $e->getMessage();
+        }
     }
-    catch(PDOException $e)
-    {
-        echo $e->getMessage();
-    }
-
 }
+//coded by Emma Herman Edited by Peter Nabiswa
 ?>
 
-//coded by Emma Herman
+
+
+
 </body>
 </html>
 </body>
@@ -271,24 +249,24 @@ if(isset($_GET["submit"])){
                 <div class="widget">
 <ul>
                     <h3> Female Houses</h3>
-                        <p><span>Brooks
+                        <p><span>Brooks <?php $hseName = "Brooks"; echo " - ".get_spotsAvailable($db, $hseName)." spaces" ?>
                         <br>
-                        <p><span>Howard
+                        <p><span>Howard <?php $hseName = "Howard"; echo " - ".get_spotsAvailable($db, $hseName)." spaces" ?>
                         <br>
-                        <p><span>Joe
+                        <p><span>Joe <?php $hseName = "Joe"; echo " - ".get_spotsAvailable($db, $hseName)." spaces" ?>
                         <br>
-                        <p><span>Syl - Women
+                        <p><span>Syl-Women <?php $hseName = "Syl-Women"; echo " - ".get_spotsAvailable($db, $hseName)." spaces" ?>
                         </p></span>
 
                     <h3> Male Houses</h3>
 
-                        <p><span>Buck
+                        <p><span>Buck <?php $hseName = "Buck"; echo " - ".get_spotsAvailable($db, $hseName)." spaces" ?>
                         <br>
-                        <p><span>Ferg
+                        <p><span>Ferg <?php $hseName = "Ferg"; echo " - ".get_spotsAvailable($db, $hseName)." spaces" ?>
                         <br>
-                        <p><span>Lowrey
+                        <p><span>Lowrey <?php $hseName = "Lowrey"; echo " - ".get_spotsAvailable($db, $hseName)." spaces" ?>
                         <br>
-                        <p><span>Syl - Men
+                        <p><span>Syl-Men <?php $hseName = "Syl-Men"; echo " - ".get_spotsAvailable($db, $hseName)." spaces" ?>
                         <br><br></p></span>
                     </ul>
                 </div>
