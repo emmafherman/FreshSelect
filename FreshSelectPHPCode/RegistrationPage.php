@@ -21,7 +21,7 @@ include ("DatabaseConnection.php")
 <?php echo '<center><h1>Registration</h1></center>'; ?>
 
 <p><center><span class = "error" > * required field. </span></p></center>
-<form  method = "GET" action="RegistrationInfoData.php">
+<form  method = "POST" action = RegistrationInfoData.php>
     <center>Prin ID: <input type = "text" name = "prinId">
         <span
                 class="error">*
@@ -40,17 +40,27 @@ include ("DatabaseConnection.php")
         </span>
         <br><br>
     </center>
-    <center>Gender: <input type = "text" name = "gender">
+    <center>Gender:
+        <select name = "gender">
+            <option value = "" >Select...</option>
+            <option value = "M" >Male</option>
+            <option value = "F" >Female</option>
+        </select>
         <span
             class="error">*
         </span>
         <br><br>
     </center>
-    <center>Freshman House:<input type = "text" name = "freshHouse">
+    <center>Freshman House:>
+        <select name = "freshHouse">
+            <option value = "" >Select...</option>
+            <option value = "Anderson" >Anderson</option>
+            <option value = "Rackham" >Rackham</option>
+        </select>
         <span
-            class="error">*
+                class="error">*
         </span>
-            <br><br>
+        <br><br>
     </center>
     <center>
         Username:   <input type = "text" name = "newUser">
