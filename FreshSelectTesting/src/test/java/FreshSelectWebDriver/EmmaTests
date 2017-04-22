@@ -30,6 +30,7 @@ public class WebsiteTests {
         //houseSelection();
     }
 
+    @Te
     public static void login() {
         pass = getPassword();
         String URL = "http://" + ENVIRONMENT + "login.php";//goes to log-in page
@@ -111,7 +112,7 @@ public class WebsiteTests {
         final JFrame parent = new JFrame();
         JButton button = new JButton();
         String password = JOptionPane.showInputDialog(parent, "What is " +
-        user + "'s password?", null);
+                user + "'s password?", null);
         return password;
     } //GetPassword
 

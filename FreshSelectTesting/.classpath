@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry excluding="FreshSelectWebDriver/WebsiteTests.java|FreshSelectWebDriver/" kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/test/java/FreshSelectWebDriver"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.seleniumhq.selenium:selenium-java:2.53.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.seleniumhq.selenium:selenium-chrome-driver:2.53.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.seleniumhq.selenium:selenium-remote-driver:2.53.0"/>
@@ -26,5 +27,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.seleniumhq.selenium:selenium-leg-rc:2.53.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: junit:junit:4.11"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Maven: org.hamcrest:hamcrest-core:1.3"/>
+	<classpathentry kind="lib" path="/Users/emma/Downloads/selenium-2.53.0 2/selenium-java-2.53.0-srcs.jar"/>
+	<classpathentry kind="lib" path="/Users/emma/Downloads/selenium-server-standalone-3.4.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
