@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8128378d-e33c-47a5-8aae-2fc6fca3ee97" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FreshSelectTesting/src/test/java/FreshSelectWebDriver/WebsiteTests.java" afterPath="$PROJECT_DIR$/FreshSelectTesting/src/test/java/FreshSelectWebDriver/WebsiteTests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HouseSortingAlgorithm/SortingAlg.java" afterPath="$PROJECT_DIR$/HouseSortingAlgorithm/SortingAlg.java" />
     </list>
     <ignored path="FreshSelect.iws" />
@@ -32,7 +31,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="570">
               <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,9 +41,13 @@
       <file leaf-file-name="WebsiteTests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FreshSelectTesting/src/test/java/FreshSelectWebDriver/WebsiteTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="480">
               <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <marker date="1492626678000" expanded="true" signature="1847:4083" placeholder="{...}" />
+                <marker date="1492626678000" expanded="true" signature="4645:4863" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,8 +55,8 @@
       <file leaf-file-name="SortingAlg.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HouseSortingAlgorithm/SortingAlg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+            <state relative-caret-position="300">
+              <caret line="20" column="67" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -615,7 +620,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -631,7 +638,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -647,7 +656,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -682,22 +693,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FreshSelectTesting/src/test/java/FreshSelectWebDriver/WebsiteTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="480">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1492626678000" expanded="true" signature="1847:4083" placeholder="{...}" />
+            <marker date="1492626678000" expanded="true" signature="4645:4863" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HouseSortingAlgorithm/SortingAlg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+        <state relative-caret-position="300">
+          <caret line="20" column="67" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
           <folding />
         </state>
       </provider>
