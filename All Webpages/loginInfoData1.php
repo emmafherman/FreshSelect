@@ -2,7 +2,7 @@
 session_start();
 ?>
 <?php
-include ("DatabaseConnection.php")
+include("DatabaseConnection.php")
 
 /**
  * Created by PhpStorm.
@@ -14,6 +14,7 @@ include ("DatabaseConnection.php")
 
 <html
 <body>
+
 <?php
 // Gets the information from the form
 $login = $_POST["login"];
@@ -28,15 +29,13 @@ $row = $result->fetch_assoc();
 
 if (empty($login))
     echo "Please enter your login.";
-else
-{
+else {
     if ($login == $row["login"]) {
         $resultPassword = $row["password"];
 
         if (empty($password))
             echo "Please enter your password.";
-        else if ($userInputPass == $resultPassword)
-        {
+        else if ($userInputPass == $resultPassword) {
             // Prompts the user, and sets the users
             // permission and sets that they are logged in.
             // Then redirects to the home page.
@@ -45,14 +44,12 @@ else
             $_SESSION['logged_in'] = true;
             header('Refresh: 1; URL = home.php');
             exit();
-        }
-        else
+        } else
             echo 'Incorrect password.';
-    }
-    else
+    } else
         echo "Incorrect login.";
 }
 ?>
-<br><INPUT TYPE = "button" VALUE = "Back" onClick = "history.go(-1);"/>
+<br><INPUT TYPE="button" ID="back" VALUE="Back" onClick="history.go(-1);"/>
 </body>
 </html>

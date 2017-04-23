@@ -1,40 +1,5 @@
-<!-- Created by Caidi Phillips -->
-<?php
-session_start();
-?>
-
-<?php
-// Checks to see if the person is logged in and their permission is Y
-// If not they are redirected to the Permission Error page.
-if(isset($_SESSION['logged_in']) && $_SESSION['permission'] == 'Y')
-{
-echo '';
-}
-else 
-header('Location: PermissionErrorPage.php');
-?>
-
-<?php
-include ("DatabaseConnection.php")
-?>
-
-<!-- Created by Peter Nabiswa -->
-<?php
-// define variables and set to empty values
-$id = $houseName = $houseGender = $spotsAvailable = $spotsFilled  = "";
-
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
-?>
-
-
 <!DOCTYPE html>
-<!-- Created by Emma Herman -->
+<!-- HTML created by Emma Herman -->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -71,7 +36,14 @@ function test_input($data) {
         #content-inner { margin:0 auto; padding:10px; width:970px;background:#fff;}
         #content #contentbar { margin:0; padding:0; float:right; width:760px;}
         #content #contentbar .article { margin:0 0 24px; padding:0 20px 0 15px; }
-        #content #contentbar .error {color: red;}
+        #content #sidebar { padding:0; float:left; width:200px;}
+        #content #sidebar .widget { margin:0 0 12px; padding:8px 8px 8px 13px;line-height:1.4em;}
+        #content #sidebar .widget h3 a { text-decoration:none;}
+        #content #sidebar .widget ul { margin:0; padding:0; list-style:none; color:#959595;}
+        #content #sidebar .widget ul li { margin:0;}
+        #content #sidebar .widget ul li { padding:4px 0; width:185px;}
+        #content #sidebar .widget ul li a { color:blue; text-decoration:none; margin-left:-16px; padding:4px 8px 4px 16px;}
+        #content #sidebar .widget ul li a:hover { color:#d3d3f9; font-weight:bold; text-decoration:none;}
 
         /* Footerblurb */
         #footerblurb { background:#eee;color:blue;}
@@ -111,90 +83,30 @@ function test_input($data) {
             <h1>Freshmen sorting</h1>
         </div>
     </div>
-
     <div id="content">
         <div id="content-inner">
             <main id="contentbar">
                 <div class="article">
-                    <body>
-
-<!--- Created by Peter --->
-<div id="HouseUpdate">
-    <h2>House Update</h2>
-    <p><span class = "error">* required field.</span></p>
-    <form method = "get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
-        House Name: <select name="houseName">
-                    <option value="">Enter the House ID...</option>
-                    <option value="Howard">Howard</option>
-                    <option value="Lowrey">Lowrey</option>
-                    <option value="Buck">Buck</option>
-                    <option value="Brooks">Brooks</option>
-                    <option value="Syl-Men">Syl-Men</option>
-                    <option value="Syl-Women">Syl-Women</option>
-                    <option value="Joe">Joe</option>
-                    <option value="Ferguson">Ferguson</option>
-                    <option value="Anderson">Anderson</option>
-                    <option value="Rackham">Rackham</option>
-                    </select><span class="error"> *</span>
-                    <br><br>
-        House Gender: <select name="houseGender">
-                      <option value="">Select...</option>
-                      <option value="M">Male</option>
-                      <option value="F">Female</option>
-                      </select><span class="error"> *</span>
-        <br><br>
-        Spots Available: <input type="number" name="spotsAvailable" required="required" placeholder="Num_0f_spots" min="0"><span class="error"> *</span>
-        <br><br>
-        Spots Filled: <input type="number" name="spotsFilled" required="required" placeholder="Num_0f_spots" min="0"><span class="error"> *</span>
-        <br><br>
-        <input type="submit" name="submit" value="Submit" />
-</form>
-</body>
-</html>
-               
-<?php
-
-if(isset($_GET["submit"])){
-    $h_name = test_input($_GET["houseName"]);
-    $h_gender = test_input($_GET["houseGender"]);
-    $h_sAvailable = test_input($_GET["spotsAvailable"]);
-    $h_sFilled = test_input($_GET["spotsFilled"]);
-
-    if (empty($h_name)) 
-        echo "Please enter the house name.";
-    else if (empty($h_gender)) 
-        echo  "Please enter the house gender.";
-    else if (!isset($h_sAvailable)) 
-        echo  "Please enter the number of spaces available.";
-    else if (!isset($h_sFilled)) 
-        echo  "Please enter the number of spots filled.";
-    else {
-        
-     try{
-        
-        $sql = "INSERT INTO House(id,houseName,houseGender,spotsAvailable,spotsFilled)
-        VALUES (DEFAULT,'$h_name','$h_gender','$h_sAvailable','$h_sFilled') 
-        ON DUPLICATE KEY UPDATE spotsAvailable = $h_sAvailable, spotsFilled = $h_sFilled ";
-            
-        if(mysqli_query($db, $sql)){
-                echo "House updated successfully.";
-                
-            } else{
-                echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
-            }
-            
-        }
-        catch(PDOException $e)
-        {
-            echo $e->getMessage();
-        }
-
-    }
-}
-?>
-</div>
+                    <h2><span>Dear Freshmen...</span></h2>
+                    <p><span>This site is used by Principia College to best sort you into your upperclassmen housing.</span></p>
+                    <p><span>Please navigate to the House Selection Form in order to fill out your housing choices. If you are late, your form will automatically be sorted into the "any" category and you'll go into the house that needs you the most.</span></p>
+                    <p><span>Regardless of how things turn out, you'll bless and be blessed by the house you end up in next year. I pinky promise!</span></p>
+                    <h2><span>Love,</span></h2>
+                    <h2><span>  the Principia Panther.</span></h2>
+                </div>
             </main>
+
+            <nav id="sidebar">
+                <div class="widget">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">House info</a></li>
+                        <li><a href="https://prinweb.principia.edu/internal/student-life">Student Life website</a></li>
+                        <li><a href="Contact.php">Contact</a></li>
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
             <div class="clr"></div>
         </div>
     </div>
@@ -202,7 +114,7 @@ if(isset($_GET["submit"])){
     <div id="footerblurb">
         <div id="footerblurb-inner">
 
-           <div class="column">
+            <div class="column">
                 <h2><span></span></h2>
             </div>
             <div class="column">
@@ -213,7 +125,7 @@ if(isset($_GET["submit"])){
             </div>
             <div class="clr"></div>
         </div>
-    </div>  
+    </div>
 </div>
 </body>
 </html>
