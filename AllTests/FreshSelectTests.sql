@@ -6,53 +6,47 @@ SELECT firstName, lastName FROM Person P
 JOIN Student S on P.prinID = S.PrinID
 WHERE gender = 'M';
 
-#List all female students
-
-SELECT firstName, lastName FROM Person P
-JOIN Student S on P.prinID = S.PrinID
-WHERE gender = 'F';
-
 #Select the students in Lowrey
 
 SELECT firstName, lastName FROM Person P
 JOIN Student S on P.prinID = S.PrinID
-WHERE upperHouse = 'Lowrey';
+WHERE upperHouse = 2;
 
 #Select the students that got into brooks and brooks was their first choice.
 
 SELECT firstName, lastName FROM Person P
 JOIN Student S ON P.prinID = S.PrinID
-WHERE upperHouse = 'Brooks' and preference = 'choice 1';
+WHERE upperHouse = 4 and preference = 1;
 
 #List all student's who got their first pick.
 
 SELECT firstName, lastName, upperHouse FROM Person P
 JOIN Student S ON P.prinID = S.PrinID
-WHERE preference = 'choice 1';
+WHERE preference = 1;
 
 #List all student's who got their secpnd pick.
 
 SELECT firstName, lastName, upperHouse FROM Person P
 JOIN Student S ON P.prinID = S.PrinID
-WHERE preference = 'choice 2';
+WHERE preference = 2;
 
 #List all student's who did not have a preference.
 
 SELECT firstName, lastName, upperHouse FROM Person P
 JOIN Student S ON P.prinID = S.PrinID
-WHERE preference = 'choice any';
+WHERE preference = 5;
 
 #List all female student's who got their first pick.
 
 SELECT firstName, lastName, upperHouse FROM Person P
 JOIN Student S ON P.prinID = S.PrinID
-WHERE preference = 'choice 1' and gender = 'F';
+WHERE preference = 1 and gender = 'F';
 
 #List all male student's who got their first pick.
 
 SELECT firstName, lastName, upperHouse FROM Person P
 JOIN Student S ON P.prinID = S.PrinID
-WHERE preference = 'choice 1' and gender = 'M';
+WHERE preference = 1 and gender = 'M';
 
 #List all people with admin permission
 
