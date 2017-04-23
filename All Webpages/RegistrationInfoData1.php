@@ -1,5 +1,5 @@
 <?php
-include ("DatabaseConnection.php")
+include("DatabaseConnection.php")
 ?>
 <html>
 <!--- Coded by Caidi Phillips --->
@@ -56,20 +56,17 @@ else {
                 echo "New User added successfully.";
                 header('Refresh: 1; URL = login.php');
                 exit();
-            }
-            else {
+            } else {
                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
             }
-        }
-        else {
+        } else {
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
         }
-    }
-    else {
+    } else {
         echo "Passwords did not match.";
     }
 }
 ?>
-<br><INPUT TYPE = "button" VALUE = "Back" onClick = "history.go(-1);"/>
+<br><INPUT TYPE="button" id="back" VALUE="Back" onClick="history.go(-1);"/>
 </body>
 </html>
