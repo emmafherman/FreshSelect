@@ -13,12 +13,9 @@ import org.openqa.selenium.WebElement; //used to find elements
 public class WebsiteTests {
 
     public static final String ENVIRONMENT = "freshselect.000webhostapp.com/";
-    static WebDriver driver = new ChromeDriver();
-    static String testUser = "emma.herman";   //Emma's login
-    static String testPass = "cutie911";    //Emma's login
-    static String badUser1 = "000000000";   //no "P01..."
-    static String badUser2 = "P01";         //too short
-    static String badUser3 = "P0102388*";   //no special characters
+    //static WebDriver driver = new ChromeDriver();
+    static String login = "test.test"; //test user
+    static String first, last = "test";      //first
     static String pass, user;
 
     public static void main(String args[]) {

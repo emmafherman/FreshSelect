@@ -36,7 +36,14 @@
         #content-inner { margin:0 auto; padding:10px; width:970px;background:#fff;}
         #content #contentbar { margin:0; padding:0; float:right; width:760px;}
         #content #contentbar .article { margin:0 0 24px; padding:0 20px 0 15px; }
-        #content #contentbar .error {color: red;}
+        #content #sidebar { padding:0; float:left; width:200px;}
+        #content #sidebar .widget { margin:0 0 12px; padding:8px 8px 8px 13px;line-height:1.4em;}
+        #content #sidebar .widget h3 a { text-decoration:none;}
+        #content #sidebar .widget ul { margin:0; padding:0; list-style:none; color:#959595;}
+        #content #sidebar .widget ul li { margin:0;}
+        #content #sidebar .widget ul li { padding:4px 0; width:185px;}
+        #content #sidebar .widget ul li a { color:blue; text-decoration:none; margin-left:-16px; padding:4px 8px 4px 16px;}
+        #content #sidebar .widget ul li a:hover { color:#d3d3f9; font-weight:bold; text-decoration:none;}
 
         /* Footerblurb */
         #footerblurb { background:#eee;color:blue;}
@@ -73,49 +80,45 @@
     </header>
     <div class="feature">
         <div class="feature-inner">
-            <h1>Final Sorted List</h1>
+            <h1>Contact</h1>
         </div>
     </div>
+
     <div id="content">
         <div id="content-inner">
+
             <main id="contentbar">
                 <div class="article">
-                    <body>
-                    <?php echo '<h1>Ready to sort freshmen?</h1>'; ?>
-                    <input type = "submit" name = "submit" value = "Yes, sort them!">
+                    <h3><span>Students, if you have questions about the selection form due date, upperclass houses, or anything related to the freshmen sorting process, please contact your freshmen RCE.
+<br><br>
+Ann Brown can be reached <a href="mailto:ann.brown@principia.edu?subject=FreshSelect Inquiry">here.</a>
+<br>
+Geoff Hinchman can be reached <a href="mailto:geoff.hinchman@principia.edu?subject=FreshSelect Inquiry">here.</a>
+<br><br><br>
+<span>Admin, if you have questions or issues with the website, please contact the website creators
+<a href="mailto:emmafherman4@gmail.com?subject=FreshSelect Inquiry">here.</a></h3>
+                </div>
+            </main>
 
-                    <form  method = "GET" action="houseSelectionData.php">
-                        GENERATE OUTPUT OF SORTED FRESHMEN HERE   <input type = "text" name = "choice1">
-                        <span class="error">*</span>
-                        <br><br>
-                    </body>
-</html>
-</div>
-</main>
-
-<nav id="sidebar">
-    <div class="widget">
-        <h3> Spaces still open go here</h3>
+            <div class="clr"></div>
+        </div>
     </div>
-</nav>
-<div class="clr"></div>
-</div>
-</div>
-<div id="footerblurb">
-    <div id="footerblurb-inner">
 
-        <div class="column">
-            <h2><span></span></h2>
+    <div id="footerblurb">
+        <div id="footerblurb-inner">
+
+            <div class="column">
+                <h2><span></span></h2>
+            </div>
+            <div class="column">
+                <p><span></span></p>
+            </div>
+            <div class="column">
+                <p><span>by E. Herman, C. Phillips, and P. Nabiswa</span></p>
+            </div>
+            <div class="clr"></div>
         </div>
-        <div class="column">
-            <p><span></span></p>
-        </div>
-        <div class="column">
-            <p><span>by E. Herman, C. Phillips, and P. Nabiswa</span></p>
-        </div>
-        <div class="clr"></div>
     </div>
-</div>
 </div>
 </body>
 </html>
